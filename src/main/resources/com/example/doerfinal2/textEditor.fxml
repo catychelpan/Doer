@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doerfinal2.TextEditorController">
+   <children>
+      <HTMLEditor fx:id="htmlEdit"  htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="14.0" layoutY="12.0" prefHeight="333.0" prefWidth="572.0" />
+      <JFXButton fx:id="goBack_btn" layoutX="15.0" layoutY="356.0" mnemonicParsing="false" onAction="#goBack" prefHeight="29.0" prefWidth="51.0" style="-fx-background-color: #A0B5B1; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="&lt;">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+      </JFXButton>
+      <JFXButton fx:id="save_btn" layoutX="452.0" layoutY="356.0" mnemonicParsing="false" onAction="#saveText" prefHeight="29.0" prefWidth="133.0" style="-fx-background-color: #A0B5B1; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Save" />
+   </children>
+</AnchorPane>

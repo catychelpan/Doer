@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doerfinal2.controllers.HabitsController">
+   <children>
+      <TabPane fx:id="tabPane" layoutY="-2.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="week1_tab" text="Week 1">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="week1Table" layoutX="14.0" layoutY="19.0" prefHeight="298.0" prefWidth="572.0">
+                            <stylesheets>
+                                <URL value="@TableViewStyle.css" />
+                            </stylesheets>
+                          <columns>
+                            <TableColumn fx:id="habit_col" prefWidth="110.0" text="Habit" />
+                            <TableColumn fx:id="mon_col" prefWidth="49.0" text="MON" />
+                            <TableColumn fx:id="tue_col" prefWidth="49.0" text="TUE" />
+                            <TableColumn fx:id="wed_col" prefWidth="50.0" text="WED" />
+                            <TableColumn fx:id="thu_col" prefWidth="48.0" text="THU" />
+                            <TableColumn fx:id="fri_col" prefWidth="48.0" text="FRI" />
+                            <TableColumn fx:id="sat_col" prefWidth="48.0" text="SAT" />
+                            <TableColumn fx:id="sun_col" prefWidth="48.0" text="SUN" />
+                            <TableColumn fx:id="progress_col" prefWidth="118.66665649414062" text="Progress" />
+
+
+                          </columns>
+                        </TableView>
+                        <JFXButton layoutX="467.0" layoutY="334.0" mnemonicParsing="false" onAction="#seeChart" prefHeight="29.0" prefWidth="119.0" style="-fx-background-color: #A0B5B1; -fx-cursor: hand; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Overall Progress" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></JFXButton>
+                        <JFXButton layoutX="14.0" layoutY="334.0" mnemonicParsing="false" onAction="#goBack" prefHeight="29.0" prefWidth="51.0" style="-fx-background-color: #A0B5B1; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="&lt;" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></JFXButton>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="week2_tab" text="Week 2">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <TableView fx:id="week2Table" layoutX="14.0" layoutY="19.0" prefHeight="298.0" prefWidth="572.0">
+                                <stylesheets>
+                                    <URL value="@TableViewStyle.css" />
+                                </stylesheets>
+                                <columns>
+                                    <TableColumn prefWidth="110.0" text="Habit" />
+                                    <TableColumn prefWidth="49.0" text="MON" />
+                                    <TableColumn prefWidth="49.0" text="TUE" />
+                                    <TableColumn prefWidth="50.0" text="WED" />
+                                    <TableColumn prefWidth="48.0" text="THU" />
+                                    <TableColumn prefWidth="48.0" text="FRI" />
+                                    <TableColumn prefWidth="48.0" text="SAT" />
+                                    <TableColumn prefWidth="48.0" text="SUN" />
+                                    <TableColumn prefWidth="118.66665649414062" text="Progress" />
+
+
+                                </columns>
+                            </TableView>
+                            <JFXButton layoutX="467.0" layoutY="334.0" mnemonicParsing="false" onAction="#seeChart" prefHeight="29.0" prefWidth="119.0" style="-fx-background-color: #A0B5B1; -fx-cursor: hand; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Overall Progress" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></JFXButton>
+                            <JFXButton layoutX="14.0" layoutY="334.0" mnemonicParsing="false" onAction="#goBack" prefHeight="29.0" prefWidth="51.0" style="-fx-background-color: #A0B5B1; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="&lt;" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></JFXButton>
+                        </children></AnchorPane>
+
+
+                </content>
+            </Tab>
+          <Tab fx:id="week3_tab" text="Week 3">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                      <TableView fx:id="week3Table" layoutX="14.0" layoutY="19.0" prefHeight="298.0" prefWidth="572.0">
+                          <stylesheets>
+                              <URL value="@TableViewStyle.css" />
+                          </stylesheets>
+                          <columns>
+                              <TableColumn prefWidth="110.0" text="Habit" />
+                              <TableColumn prefWidth="49.0" text="MON" />
+                              <TableColumn prefWidth="49.0" text="TUE" />
+                              <TableColumn prefWidth="50.0" text="WED" />
+                              <TableColumn prefWidth="48.0" text="THU" />
+                              <TableColumn prefWidth="48.0" text="FRI" />
+                              <TableColumn prefWidth="48.0" text="SAT" />
+                              <TableColumn prefWidth="48.0" text="SUN" />
+                              <TableColumn prefWidth="118.66665649414062" text="Progress" />
+
+
+                          </columns>
+                      </TableView>
+                      <JFXButton layoutX="467.0" layoutY="334.0" mnemonicParsing="false" onAction="#seeChart" prefHeight="29.0" prefWidth="119.0" style="-fx-background-color: #A0B5B1; -fx-cursor: hand; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Overall Progress" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></JFXButton>
+                      <JFXButton layoutX="14.0" layoutY="334.0" mnemonicParsing="false" onAction="#goBack" prefHeight="29.0" prefWidth="51.0" style="-fx-background-color: #A0B5B1; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="&lt;" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></JFXButton>
+                  </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="week4_tab" text="Week 4">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <TableView fx:id="week4Table" layoutX="14.0" layoutY="19.0" prefHeight="298.0" prefWidth="572.0">
+                                <stylesheets>
+                                    <URL value="@TableViewStyle.css" />
+                                </stylesheets>
+                                <columns>
+                                    <TableColumn prefWidth="110.0" text="Habit" />
+                                    <TableColumn prefWidth="49.0" text="MON" />
+                                    <TableColumn prefWidth="49.0" text="TUE" />
+                                    <TableColumn prefWidth="50.0" text="WED" />
+                                    <TableColumn prefWidth="48.0" text="THU" />
+                                    <TableColumn prefWidth="48.0" text="FRI" />
+                                    <TableColumn prefWidth="48.0" text="SAT" />
+                                    <TableColumn prefWidth="48.0" text="SUN" />
+                                    <TableColumn prefWidth="118.66665649414062" text="Progress" />
+
+
+                                </columns>
+                            </TableView>
+                            <JFXButton fx:id="overallProgress_btn" layoutX="467.0" layoutY="334.0" mnemonicParsing="false" onAction="#seeChart" prefHeight="29.0" prefWidth="119.0" style="-fx-background-color: #A0B5B1; -fx-cursor: hand; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Overall Progress" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></JFXButton>
+                            <JFXButton layoutX="14.0" layoutY="334.0" mnemonicParsing="false" onAction="#goBack" prefHeight="29.0" prefWidth="51.0" style="-fx-background-color: #A0B5B1; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="&lt;" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></JFXButton>
+                        <JFXButton fx:id="finish_btn" layoutX="385.0" layoutY="334.0" mnemonicParsing="false" onAction="#restartTracking" prefHeight="29.0" prefWidth="75.0" style="-fx-background-color: #FFFFFF; -fx-cursor: hand; -fx-border-radius: 5px; -fx-border-color: #000000; -fx-background-radius: 5px;" text="Finish" />
+                        </children></AnchorPane>
+                </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

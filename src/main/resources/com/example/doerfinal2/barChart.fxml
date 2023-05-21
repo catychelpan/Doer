@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<ScrollPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doerfinal2.controllers.BarChartController">
+   <content>
+      <AnchorPane fx:id="anchorPane" minHeight="400.0" minWidth="600.0" prefHeight="440.0" prefWidth="600.0">
+         <JFXButton layoutX="23.0" layoutY="389.0" onAction="#goBack" prefHeight="27.0" prefWidth="51.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="&lt;">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </JFXButton>
+      </AnchorPane>
+   </content>
+</ScrollPane>

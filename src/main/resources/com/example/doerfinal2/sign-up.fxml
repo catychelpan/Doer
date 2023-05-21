@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doerfinal2.controllers.SignUpController">
+    <AnchorPane prefHeight="400.0" prefWidth="239.0" style="-fx-background-color: #A0B5B1;">
+        <ImageView fitHeight="194.0" fitWidth="191.0" layoutX="24.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@Untitled-1.png" />
+        </ImageView>
+        <Label layoutX="64.0" layoutY="290.0" text="(555)-555-5555">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="51.0" layoutY="310.0" text="doer@support.com">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+    </AnchorPane>
+    <AnchorPane prefHeight="400.0" prefWidth="353.0">
+        <ImageView fitHeight="78.0" fitWidth="94.0" layoutX="143.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@lock.png" />
+        </ImageView>
+        <Label layoutX="53.0" layoutY="136.0" text="Username">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="55.0" layoutY="186.0" text="Password">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <PasswordField fx:id="tf_password" layoutX="137.0" layoutY="182.0" prefHeight="28.0" prefWidth="173.0" style="-fx-border-color: #000000; -fx-border-radius: 10px; -fx-background-radius: 10px; -fx-background-color: #E8E8E8;" />
+        <Button fx:id="btn_signup" layoutX="118.0" layoutY="288.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="127.0" style="-fx-background-color: #A0B5B1; -fx-cursor: hand; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Sign up" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Button>
+        <Label layoutX="94.0" layoutY="364.0" text="Already ave an account?">
+            <font>
+                <Font name="System Bold" size="11.0" />
+            </font>
+        </Label>
+        <Button fx:id="btn_login" layoutX="227.0" layoutY="360.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF; -fx-border-color: #3C3C3C; -fx-background-radius: 5px; -fx-border-radius: 5px;" text="Login!" textFill="#7a8f8b">
+            <font>
+                <Font name="System Bold" size="11.0" />
+            </font>
+        </Button>
+      <Label layoutX="55.0" layoutY="226.0" prefWidth="85.0" text="Confirm password" wrapText="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="tf_confPassword" layoutX="137.0" layoutY="232.0" prefHeight="28.0" prefWidth="173.0" style="-fx-border-color: #000000; -fx-border-radius: 10px; -fx-background-radius: 10px; -fx-background-color: #E8E8E8;" />
+      <TextField fx:id="tf_username" layoutX="137.0" layoutY="134.0" prefWidth="173.0" style="-fx-background-color: #E8E8E8; -fx-border-color: #000000; -fx-border-radius: 10px; -fx-background-radius: 10px;" />
+    </AnchorPane>
+</HBox>

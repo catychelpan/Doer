@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doerfinal2.controllers.HabitsFirstVisitController">
+   <children>
+      <Label layoutX="164.0" layoutY="29.0" text="Let's build your habits together!">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="115.0" layoutY="57.0" text="Fill the 10 fields below with the habits you want to establish in your life." textAlignment="CENTER" />
+      <JFXTextField fx:id="habit1" layoutX="132.0" layoutY="106.0" promptText="Habit #1" />
+      <JFXTextField fx:id="habit2" layoutX="132.0" layoutY="152.0" promptText="Habit #2" />
+      <JFXTextField fx:id="habit3" layoutX="132.0" layoutY="199.0" promptText="Habit #3" />
+      <JFXTextField fx:id="habit4" layoutX="132.0" layoutY="244.0" promptText="Habit #4" />
+      <JFXTextField fx:id="habit6" layoutX="327.0" layoutY="107.0" promptText="Habit #6" />
+      <JFXTextField fx:id="habit7" layoutX="327.0" layoutY="153.0" promptText="Habit #7" />
+      <JFXTextField fx:id="habit8" layoutX="327.0" layoutY="200.0" promptText="Habit #8" />
+      <JFXTextField fx:id="habit9" layoutX="327.0" layoutY="245.0" promptText="Habit #9" />
+      <JFXButton fx:id="ok_btn" layoutX="411.0" layoutY="350.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="135.0" style="-fx-background-color: #A0B5B1; -fx-cursor: hand; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="OK" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="47.0" layoutY="350.0" mnemonicParsing="false" onAction="#goBack" prefHeight="29.0" prefWidth="53.0" style="-fx-background-color: #A0B5B1; -fx-cursor: hand; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="&lt;" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></JFXButton>
+      <JFXTextField fx:id="habit5" layoutX="132.0" layoutY="292.0" promptText="Habit #5" />
+      <JFXTextField fx:id="habit10" layoutX="327.0" layoutY="293.0" promptText="Habit #10" />
+   </children>
+</AnchorPane>

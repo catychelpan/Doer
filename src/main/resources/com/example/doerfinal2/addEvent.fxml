@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="485.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doerfinal2.dialogs.eventDialogController">
+    <children>
+      <HBox alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="435.0">
+         <children>
+            <JFXCheckBox fx:id="completed_checkBox" alignment="CENTER" checkedColor="#86ae9a" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="93.0" text="Completed" textFill="#86ae9a" unCheckedColor="#86ae9a">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXCheckBox>
+         </children>
+      </HBox>
+        <JFXTextField fx:id="titleField" prefHeight="19.0" prefWidth="435.0" promptText="Title" style="-fx-prompt-text-fill: #B2B2B2;">
+            <font>
+                <Font name="Calibri" size="20.0" />
+            </font>
+        </JFXTextField>
+        <HBox alignment="CENTER" prefHeight="55.0" prefWidth="435.0" spacing="10.0">
+            <children>
+                <JFXButton fx:id="standardEventButton" buttonType="RAISED" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #8FC1D1; -fx-background-radius: 15;" text="Standard" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Calibri" size="14.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="importantEventButton" buttonType="RAISED" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #8D9F87; -fx-background-radius: 15;" text="Important" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Calibri" size="14.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="urgentEventButton" buttonType="RAISED" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #E9A971; -fx-background-radius: 15;" text="Urgent" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Calibri" size="14.0" />
+                    </font>
+                </JFXButton>
+            </children>
+            <VBox.margin>
+                <Insets bottom="5.0" top="5.0" />
+            </VBox.margin>
+        </HBox>
+      <HBox alignment="CENTER" layoutX="35.0" layoutY="77.0" prefHeight="55.0" prefWidth="435.0" spacing="10.0">
+         <children>
+            <JFXRadioButton fx:id="morningPurpose" mnemonicParsing="false" text="Morning">
+               <selectedColor>
+                  <Color red="0.6595191955566406" green="0.7368420958518982" blue="0.698180615901947" />
+               </selectedColor>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="forGoalsPurpose" layoutX="191.0" layoutY="25.0" mnemonicParsing="false" text="For Goals">
+               <selectedColor>
+                  <Color red="0.6595191955566406" green="0.7368420958518982" blue="0.698180615901947" />
+               </selectedColor>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="creativePurpose" layoutX="231.0" layoutY="25.0" mnemonicParsing="false" text="Creative">
+               <selectedColor>
+                  <Color red="0.6595191955566406" green="0.7368420958518982" blue="0.698180615901947" />
+               </selectedColor>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="relaxPurpose" layoutX="277.0" layoutY="25.0" mnemonicParsing="false" text="Relax">
+               <selectedColor>
+                  <Color red="0.6595191955566406" green="0.7368420958518982" blue="0.698180615901947" />
+               </selectedColor>
+            </JFXRadioButton>
+         </children>
+      </HBox>
+      <AnchorPane prefHeight="278.0" prefWidth="435.0">
+         <children>
+            <JFXDatePicker fx:id="dateField" defaultColor="#8ca899" layoutX="219.0" layoutY="-5.0" />
+            <Label layoutX="53.0" layoutY="5.0" text="Date">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="53.0" layoutY="61.0" text="Time">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="startTime_tf" layoutX="150.0" layoutY="53.0" prefHeight="25.0" prefWidth="100.0" promptText="Start(eg. 9:00)" />
+            <JFXTextField fx:id="endTime_tf" layoutX="284.0" layoutY="53.0" prefHeight="25.0" prefWidth="100.0" promptText="Finish(eg. 22:00)" />
+            <Label layoutX="53.0" layoutY="110.0" text="Description">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="description_ta" layoutX="53.0" layoutY="151.0" prefHeight="90.0" prefWidth="336.0" />
+         </children>
+      </AnchorPane>
+    </children>
+    <padding>
+        <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+    </padding>
+</VBox>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doerfinal2.controllers.MainPageController">
+
+      <AnchorPane maxHeight="400.0" prefHeight="400.0" prefWidth="183.0" style="-fx-background-color: #A0B5B1;">
+
+         <ImageView fitHeight="36.0" fitWidth="47.0" layoutX="10.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@user.jpg" />
+         </ImageView>
+            <Label fx:id="user" layoutX="58.0" layoutY="4.0" prefHeight="17.0" prefWidth="103.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_logout" layoutX="57.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="Logout">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
+       </AnchorPane>
+      <AnchorPane maxHeight="400.0" prefHeight="400.0" prefWidth="421.0">
+      <children>
+         <JFXButton fx:id="events_btn" layoutX="80.0" layoutY="263.0" mnemonicParsing="false" onAction="#goToEvents" prefHeight="55.0" prefWidth="114.0" style="-fx-background-color: #A0B5B1;" text="Events">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+         </JFXButton>
+         <JFXButton fx:id="books_btn" layoutX="217.0" layoutY="263.0" mnemonicParsing="false" onAction="#goToBooks" prefHeight="55.0" prefWidth="114.0" style="-fx-background-color: #A0B5B1;" text="Books">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+         </JFXButton>
+         <JFXButton fx:id="journal_btn" layoutX="80.0" layoutY="329.0" mnemonicParsing="false" onAction="#goToJournal" prefHeight="55.0" prefWidth="114.0" style="-fx-background-color: #A0B5B1;" text="Journal">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+         </JFXButton>
+         <JFXButton fx:id="habits_btn" layoutX="217.0" layoutY="329.0" mnemonicParsing="false" onAction="#goToHabits" prefHeight="55.0" prefWidth="114.0" style="-fx-background-color: #A0B5B1;" text="Habits">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+         </JFXButton>
+         <ScrollPane fx:id="todayEvents" layoutX="28.0" layoutY="11.0" maxHeight="247.0">
+            <content>
+               <VBox maxHeight="247.0" prefHeight="232.0" prefWidth="358.0" spacing="3.0">
+                  <padding>
+                     <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                  </padding></VBox>
+            </content>
+         </ScrollPane>
+      </children></AnchorPane>
+
+</HBox>

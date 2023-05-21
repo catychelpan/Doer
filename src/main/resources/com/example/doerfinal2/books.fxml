@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane fx:id="booksMainPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doerfinal2.controllers.BooksController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <TableView fx:id="tableView" layoutX="25.0" layoutY="50.0" prefHeight="300.0" prefWidth="550.0">
+                <stylesheets>
+                    <URL value="@TableViewStyle.css" />
+                </stylesheets>
+              <columns>
+                <TableColumn fx:id="title_col" prefWidth="170.0" text="Title" />
+                <TableColumn fx:id="author_col" prefWidth="130.0" text="Author" />
+                  <TableColumn fx:id="status_col" prefWidth="100.66668701171875" text="Status" />
+                  <TableColumn fx:id="rate_col" prefWidth="68.3333740234375" text="Rate" />
+                  <TableColumn fx:id="notes_col" prefWidth="75.66668701171875" text="Notes." />
+              </columns>
+            </TableView>
+            <JFXButton fx:id="addBook_btn" layoutX="362.0" layoutY="360.0" onAction="#addNewBook" prefHeight="28.0" prefWidth="81.0" style="-fx-background-color: #A0B5B1; -fx-background-radius: 5;" text="Add a book" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="goBack_btn" layoutX="25.0" layoutY="360.0" onAction="#goBack" prefHeight="27.0" prefWidth="51.0" style="-fx-background-color: #A0B5B1;" text="&lt;" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="25.0" layoutY="15.0" text="Search:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="keywordField" layoutX="92.0" layoutY="12.0" prefHeight="25.0" prefWidth="484.0" promptText="Enter a keyword" style="-fx-border-color: #000000; -fx-border-radius: 10px; -fx-background-radius: 10px; -fx-background-color: #E8E8E8;" />
+            <JFXButton fx:id="update_btn" layoutX="453.0" layoutY="360.0" onAction="#updateBook" style="-fx-background-color: #FFFFFF; -fx-border-color: #3C3C3C; -fx-border-radius: 5;" text="Update" />
+            <JFXButton fx:id="delete" layoutX="520.0" layoutY="360.0" onAction="#deleteBook" style="-fx-background-color: #FFFFFF; -fx-border-color: #3C3C3C; -fx-border-radius: 5;" text="Delete" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
