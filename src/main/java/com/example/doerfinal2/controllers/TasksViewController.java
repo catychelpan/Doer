@@ -3,9 +3,9 @@ package com.example.doerfinal2.controllers;
 
 
 import com.example.doerfinal2.dialogs.AllEventsDialog;
-import com.example.doerfinal2.dialogs.EventDialog;
+import com.example.doerfinal2.dialogs.TaskDialog;
 import com.example.doerfinal2.MongodbUtil;
-import com.example.doerfinal2.models.EventModel;
+import com.example.doerfinal2.models.TaskModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -30,7 +30,7 @@ import java.util.Optional;
 import java.util.Queue;
 import java.util.ResourceBundle;
 
-public class EventsViewController implements Initializable {
+public class TasksViewController implements Initializable {
     @FXML
     private Label monthYear_label;
     @FXML
@@ -118,24 +118,24 @@ public class EventsViewController implements Initializable {
     public void addNewEvent(ActionEvent actionEvent) {
         //here should open a dialog and wait for the answer(EventModel) to add it
         // to database and to the VBox container as a new mini event pane
-        EventModel newEvent;
+        TaskModel newEvent;
 
         String dialogTitle = "Add new event";
-        newEvent = new EventModel("", -1, "", LocalDate.now(), "", "", "");
+        newEvent = new TaskModel("", -1, "", LocalDate.now(), "", "", "");
 
 
-        Dialog<EventModel> eventDialog = new EventDialog(newEvent, "add");
+        Dialog<TaskModel> eventDialog = new TaskDialog(newEvent, "add");
 
 
 
 
         eventDialog.setTitle(dialogTitle);
-        Optional<EventModel> result = eventDialog.showAndWait();
+        Optional<TaskModel> result = eventDialog.showAndWait();
 
         //based on the returned result ad it to the database and refresh calendar
         try {
             if (result.isPresent()) {
-                EventModel addedEvent = result.get();
+                TaskModel addedEvent = result.get();
                 if(addedEvent.getPriorityInt() != 0){
                     saveEvent(addedEvent);
                 }
@@ -148,17 +148,17 @@ public class EventsViewController implements Initializable {
         }
     }
 
-    public void saveEvent(EventModel eventToSave){
+    public void saveEvent(TaskModel eventToSave){
         util.saveEvent(eventToSave);
     }
-    public void updateEvent(EventModel eventToUpdate, EventModel oldEvent){
+    public void updateEvent(TaskModel eventToUpdate, TaskModel oldEvent){
         util.updateEvent(eventToUpdate, oldEvent);
     }
 
     private void showAll(LocalDate date, String purpose) {
         //open a dialog to show all the events for this particular date
 
-        ObservableList<EventModel> allEvents = getEventsOnDate(date);
+        ObservableList<TaskModel> allEvents = getEventsOnDate(date);
         allEvents.removeIf(event -> !event.getPurposeString().equals(purpose));
 
         Dialog<ButtonType> allEventsDialog = new AllEventsDialog(allEvents);
@@ -173,11 +173,11 @@ public class EventsViewController implements Initializable {
 
     }
 
-    public void showDetails(EventModel event, String key) {
+    public void showDetails(TaskModel event, String key) {
         //open a dialog to show detailed info about event(reuse the dialog to add
         // events and do bindings between dialog fields and chosen EventModel)
 
-         EventModel old = new EventModel(event.getTitleString(),event.getPriorityInt(), event.getDescriptionString(),
+         TaskModel old = new TaskModel(event.getTitleString(),event.getPriorityInt(), event.getDescriptionString(),
                  event.getDate().get(), event.getStartTimeString(), event.getEndTimeString(),event.getPurposeString());
 
         String dialogTitle = "Edit event";
@@ -187,20 +187,20 @@ public class EventsViewController implements Initializable {
 
 
 
-        Dialog<EventModel> eventDialog = new EventDialog(event, "update");
+        Dialog<TaskModel> eventDialog = new TaskDialog(event, "update");
 
-        EventDialog.controller.getCompleted_checkBox().setDisable(false);
+        TaskDialog.controller.getCompleted_checkBox().setDisable(false);
 
         eventDialog.setTitle(dialogTitle);
 
-        Optional<EventModel> result = eventDialog.showAndWait();
+        Optional<TaskModel> result = eventDialog.showAndWait();
 
 
 
         //based on the returned result ad it to the database and refresh calendar
         try {
             if (result.isPresent()) {
-                EventModel addedEvent = result.get();
+                TaskModel addedEvent = result.get();
 
 
 
@@ -257,7 +257,7 @@ public class EventsViewController implements Initializable {
         return start;
     }
 
-    public ObservableList<EventModel> getEventsOnDate(LocalDate date){
+    public ObservableList<TaskModel> getEventsOnDate(LocalDate date){
         return util.fetchEventsOnDate(date);
     }
 
@@ -269,14 +269,14 @@ public class EventsViewController implements Initializable {
         while (stack.size() > 0) {
             LocalDate date = stack.remove();
 
-            ObservableList<EventModel> eventList = getEventsOnDate(date);
+            ObservableList<TaskModel> eventList = getEventsOnDate(date);
 
             int morning = 0;
             int goals = 0;
             int creative = 0;
             int relax = 0;
 
-            for (EventModel eventModel : eventList) {
+            for (TaskModel eventModel : eventList) {
                 int eventPriority = eventModel.getPriorityInt();
                 Label eventBox = createEventPane(eventModel);
                 String purpose = eventModel.getPurposeString().toLowerCase();
@@ -310,12 +310,12 @@ public class EventsViewController implements Initializable {
                 }
 
 
-                if (eventPriority == EventModel.STANDARD) {
+                if (eventPriority == TaskModel.STANDARD) {
                     eventBox.visibleProperty()
                             .bind(getStandardFilterPropertyProperty());
                     eventBox.managedProperty()
                             .bind(getStandardFilterPropertyProperty());
-                } else if (eventPriority == EventModel.IMPORTANT) {
+                } else if (eventPriority == TaskModel.IMPORTANT) {
                     eventBox.visibleProperty()
                             .bind(getImportantFilterPropertyProperty());
                     eventBox.managedProperty()
@@ -363,7 +363,7 @@ public class EventsViewController implements Initializable {
 
     }
 
-    private Label createEventPane(EventModel event) {
+    private Label createEventPane(TaskModel event) {
         Label box = new Label();
         box.setMinHeight(18);
         box.setPrefHeight(18);
@@ -378,9 +378,9 @@ public class EventsViewController implements Initializable {
         int priority = event.getPriorityInt();
 
 
-            if (priority == EventModel.STANDARD) {
+            if (priority == TaskModel.STANDARD) {
                 box.setStyle("-fx-background-color:  #8FC1D1");
-            } else if (priority == EventModel.IMPORTANT) {
+            } else if (priority == TaskModel.IMPORTANT) {
                 box.setStyle("-fx-background-color:   #8D9F87");
             } else {
                 box.setStyle("-fx-background-color: #E9A971");
@@ -414,7 +414,7 @@ public class EventsViewController implements Initializable {
     }
 
     private void updateDate() {
-        monthYear_label.setText(EventModel.MONTHS[selectedDate.getMonthValue() - 1] + " "
+        monthYear_label.setText(TaskModel.MONTHS[selectedDate.getMonthValue() - 1] + " "
                 + selectedDate.getYear());
     }
 

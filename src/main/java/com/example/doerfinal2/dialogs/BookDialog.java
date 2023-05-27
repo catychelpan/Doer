@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
 
-public class BookDialog extends Dialog<BookModel> {
+public class BookDialog extends Dialog<BookModel> implements CustomDialog  {
 
     public static BookModel bookModel;
     public static BookDialogController controller = new BookDialogController();
@@ -17,7 +17,7 @@ public class BookDialog extends Dialog<BookModel> {
     public BookDialog(BookModel book) {
         super();
 
-        this.setTitle("Add book");
+
         bookModel = book;
         getDialogUi();
         controller.initData(bookModel);
@@ -30,7 +30,7 @@ public class BookDialog extends Dialog<BookModel> {
     public  Pane getContent() {
 
 
-        return util.getContent("addBook.fxml","book");
+        return util.getContent("addBook.fxml", "book");
 
 
 
@@ -38,7 +38,8 @@ public class BookDialog extends Dialog<BookModel> {
 
 
 
-    private void setPropertyBindings() {
+    @Override
+    public void setPropertyBindings() {
 
         controller.getTitleField().textProperty().bindBidirectional(bookModel.titleProperty());
         controller.getAuthorField().textProperty().bindBidirectional(bookModel.authorProperty());
@@ -67,9 +68,8 @@ public class BookDialog extends Dialog<BookModel> {
 
 
     }
-
-
-    private void setResultConverter() {
+    @Override
+    public void setResultConverter() {
         javafx.util.Callback<ButtonType,BookModel> bookResultConverter = buttonType -> {
             if(buttonType == ButtonType.OK){
                 return bookModel;
@@ -83,19 +83,15 @@ public class BookDialog extends Dialog<BookModel> {
 
 
 
-    private void getDialogUi() {
+    @Override
+    public void getDialogUi() {
 
         Pane pane = getContent();
         getDialogPane().setContent(pane);
 
+        DialogPane dialogPane = getDialogPane();
 
-
-        getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-        Button buttonOK = (Button) getDialogPane().lookupButton(ButtonType.OK);
-        buttonOK.setStyle("-fx-background-color: #A0B5B1;-fx-font-size: 14.0;-fx-border-radius : 5 ;-fx-background-radius: 5");
-        Button buttonCancel = (Button) getDialogPane().lookupButton(ButtonType.CANCEL);
-        buttonCancel.setStyle("-fx-background-color: #FFFFFF;-fx-border-color: #000000;-fx-font-size: 14.0;-fx-border-radius : 5 ;-fx-background-radius: 5");
-
+        Button buttonOK = util.setDialogButtons(dialogPane);
 
 
         buttonOK.addEventFilter(javafx.event.ActionEvent.ACTION, new EventHandler<>() {

@@ -5,7 +5,7 @@ import org.bson.types.ObjectId;
 
 import java.time.LocalDate;
 
-public class EventModel {
+public class TaskModel {
 
     private ObjectId user_id;
 
@@ -33,8 +33,8 @@ public class EventModel {
     public static final int IMPORTANT = 2;
     public static final int URGENT = 3;
 
-    public EventModel(String title, int priority, String description,
-                         LocalDate date, String startTime , String endTime, String purpose) {
+    public TaskModel(String title, int priority, String description,
+                     LocalDate date, String startTime , String endTime, String purpose) {
 
 
         this.title =  new SimpleStringProperty(title);
@@ -47,9 +47,6 @@ public class EventModel {
 
     }
 
-    public EventModel() {
-
-    }
 
     public StringProperty getTitle() {
         return title;
@@ -103,16 +100,6 @@ public class EventModel {
         return startTime.get();
     }
 
-    public boolean setStartTime(String startTime) {
-        String [] arr = startTime.split(":");
-        if(Integer.parseInt(arr[0]) < 1 || Integer.parseInt(arr[0] ) > 24){
-            return false;
-        }else{
-            this.startTime = new SimpleStringProperty(startTime);
-            return true;
-        }
-
-    }
 
     public StringProperty getEndTime() {
         return endTime;

@@ -1,7 +1,7 @@
 package com.example.doerfinal2.controllers;
 
 import com.example.doerfinal2.MongodbUtil;
-import com.example.doerfinal2.models.EventModel;
+import com.example.doerfinal2.models.TaskModel;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,13 +43,13 @@ public class MainPageController implements Initializable {
     }
 
     public void displayTodayEvents(LocalDate now) {
-        ObservableList<EventModel> todayList = util.fetchEventsOnDate(now);
+        ObservableList<TaskModel> todayList = util.fetchEventsOnDate(now);
 
-        for(EventModel model : todayList){
+        for(TaskModel model : todayList){
             HBox eventPane = util.createEventPane(model);
 
 
-            EventsViewController controller = new EventsViewController();
+            TasksViewController controller = new TasksViewController();
             eventPane.setOnMouseClicked(mouseEvent -> {
                 controller.showDetails(model, "second dialog");
                 refreshTodayView();
@@ -74,7 +74,7 @@ public class MainPageController implements Initializable {
     }
 
     public void goToEvents(ActionEvent actionEvent) {
-        util.changeScene(actionEvent, "events.fxml", "Events",null);
+        util.changeScene(actionEvent, "tasks.fxml", "Tasks",null);
 
     }
 

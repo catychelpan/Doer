@@ -1,7 +1,7 @@
 package com.example.doerfinal2.dialogs;
 
 
-import com.example.doerfinal2.models.EventModel;
+import com.example.doerfinal2.models.TaskModel;
 import com.jfoenix.controls.*;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -14,7 +14,7 @@ import javafx.scene.control.ToggleGroup;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class eventDialogController  implements Initializable {
+public class TaskDialogController implements Initializable {
     @FXML
     public JFXTextField titleField;
     @FXML
@@ -44,7 +44,7 @@ public class eventDialogController  implements Initializable {
     private IntegerProperty eventType;
     private String purpose;
     ToggleGroup purpose_toggleGroup = new ToggleGroup();
-    public EventModel eventModel;
+    public TaskModel eventModel;
 
 
 
@@ -79,21 +79,21 @@ public class eventDialogController  implements Initializable {
     private void addPriorityListeners() {
         standardEventButton.setOnAction(event -> {
             clearSelected();
-            eventType =  new SimpleIntegerProperty(EventModel.STANDARD);
+            eventType =  new SimpleIntegerProperty(TaskModel.STANDARD);
             standardEventButton.setStyle("-fx-background-color :  #8FC1D1 ; -fx-background-radius:15 ;");
             completed_checkBox.setSelected(false);
         });
 
         importantEventButton.setOnAction(event -> {
             clearSelected();
-            eventType =  new SimpleIntegerProperty(EventModel.IMPORTANT);
+            eventType =  new SimpleIntegerProperty(TaskModel.IMPORTANT);
             importantEventButton.setStyle("-fx-background-color :   #8D9F87 ; -fx-background-radius:15 ;");
             completed_checkBox.setSelected(false);
         });
 
         urgentEventButton.setOnAction(event -> {
             clearSelected();
-            eventType =  new SimpleIntegerProperty(EventModel.URGENT);
+            eventType =  new SimpleIntegerProperty(TaskModel.URGENT);
            urgentEventButton.setStyle("-fx-background-color :   #E9A971 ; -fx-background-radius:15 ;");
             completed_checkBox.setSelected(false);
         });
@@ -126,7 +126,7 @@ public class eventDialogController  implements Initializable {
         this.eventType = eventType;
     }
 
-    public void initDataEvent(EventModel event) {
+    public void initDataEvent(TaskModel event) {
 
         titleField.setText(event.getTitleString());
         description_ta.setText(event.getDescriptionString());
@@ -134,11 +134,11 @@ public class eventDialogController  implements Initializable {
         startTime_tf.setText(event.getStartTimeString());
         endTime_tf.setText(event.getEndTimeString());
 
-        if(event.getPriority().get() == EventModel.STANDARD){
+        if(event.getPriority().get() == TaskModel.STANDARD){
             standardEventButton.fire();
-        } else if (event.getPriority().get() == EventModel.IMPORTANT) {
+        } else if (event.getPriority().get() == TaskModel.IMPORTANT) {
             importantEventButton.fire();
-        } else if (event.getPriority().get() == EventModel.URGENT) {
+        } else if (event.getPriority().get() == TaskModel.URGENT) {
             urgentEventButton.fire();
         }else {
            clearSelected();
@@ -156,7 +156,7 @@ public class eventDialogController  implements Initializable {
     }
 
 
-    public void setModel(EventModel event) {
+    public void setModel(TaskModel event) {
         eventModel = event;
     }
 

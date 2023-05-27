@@ -2,7 +2,7 @@ package com.example.doerfinal2.dialogs;
 
 
 import com.example.doerfinal2.MongodbUtil;
-import com.example.doerfinal2.models.EventModel;
+import com.example.doerfinal2.models.TaskModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
@@ -14,16 +14,16 @@ import javafx.scene.layout.Pane;
 import java.time.LocalDate;
 
 
-public class EventDialog  extends Dialog<EventModel> {
+public class TaskDialog extends Dialog<TaskModel> implements CustomDialog {
 
 
-    public static EventModel eventModel;
-    public static eventDialogController controller = new eventDialogController();
+    public static TaskModel eventModel;
+    public static TaskDialogController controller = new TaskDialogController();
     private final MongodbUtil util =new MongodbUtil();
     public String mode;
 
 
-    public EventDialog(EventModel newEvent, String mode) {
+    public TaskDialog(TaskModel newEvent, String mode) {
         super();
         this.mode = mode;
         this.setTitle("Add event");
@@ -41,24 +41,19 @@ public class EventDialog  extends Dialog<EventModel> {
     }
 
     public Pane getContent() {
-        return util.getContent("addEvent.fxml","event");
+        return util.getContent("addTask.fxml", "event");
 
     }
 
-    private void getDialogUi() {
+    @Override
+    public void getDialogUi() {
 
         Pane pane = getContent();
         getDialogPane().setContent(pane);
         controller.getCompleted_checkBox().setDisable(true);
 
-
-
-        getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-        Button buttonOK = (Button) getDialogPane().lookupButton(ButtonType.OK);
-        buttonOK.setStyle("-fx-background-color: #A0B5B1;-fx-font-size: 14.0;-fx-border-radius : 5 ;-fx-background-radius: 5");
-        Button buttonCancel = (Button) getDialogPane().lookupButton(ButtonType.CANCEL);
-        buttonCancel.setStyle("-fx-background-color: #FFFFFF;-fx-border-color: #000000;-fx-font-size: 14.0;-fx-border-radius : 5 ;-fx-background-radius: 5");
-
+        DialogPane dialogPane = getDialogPane();
+        Button buttonOK = util.setDialogButtons(dialogPane);
 
 
         buttonOK.addEventFilter(javafx.event.ActionEvent.ACTION, new EventHandler<>() {
@@ -79,15 +74,15 @@ public class EventDialog  extends Dialog<EventModel> {
                 }else if(mode.equals("add")){
                     String pattern = "^((1[0-9]|2[0-3])|[1-9]):[0-5][0-9]$";
                     if(!controller.startTime_tf.getText().matches(pattern) || !controller.endTime_tf.getText().matches(pattern)){
-                        showAlertDialog("Check your time input. It should be in right format(eg.22:00,9:00)");
+                        showAlertDialog("Wrong time format.Should be(eg.22:00,9:00)");
                         return false;
 
                     }
 
                     //here should warn if event for the same date and start time already exists
-                    ObservableList<EventModel> existingEvents;
+                    ObservableList<TaskModel> existingEvents;
                     existingEvents = getEventsOnDate(controller.dateField.getValue());
-                    for(EventModel existingEvent : existingEvents){
+                    for(TaskModel existingEvent : existingEvents){
                         if(existingEvent.getStartTimeString().equals(controller.startTime_tf.getText())){
                             showAlertDialog("You already have event on this date and starting time.");
                             return false;
@@ -104,16 +99,17 @@ public class EventDialog  extends Dialog<EventModel> {
     public void showAlertDialog(String message){
         util.showAlert(message);
     }
-    public ObservableList<EventModel> getEventsOnDate(LocalDate date){
+    public ObservableList<TaskModel> getEventsOnDate(LocalDate date){
         return util.fetchEventsOnDate(date);
 
     }
 
 
-    private void setResultConverter() {
-        javafx.util.Callback<ButtonType, EventModel> bookResultConverter = buttonType -> {
+    @Override
+    public void setResultConverter() {
+        javafx.util.Callback<ButtonType, TaskModel> bookResultConverter = buttonType -> {
             if(buttonType == ButtonType.OK){
-                if(controller.getEventType().get() != EventModel.COMPLETED ) {
+                if(controller.getEventType().get() != TaskModel.COMPLETED ) {
                     eventModel.setPriority(controller.getEventType().get());
                 }else{
                     eventModel.setPriority(0);
@@ -128,7 +124,8 @@ public class EventDialog  extends Dialog<EventModel> {
 
     }
 
-    private void setPropertyBindings() {
+    @Override
+    public void setPropertyBindings() {
         //in brackets, we should have string property
 
         controller.titleField.textProperty().bindBidirectional(eventModel.getTitle());
@@ -163,17 +160,15 @@ public class EventDialog  extends Dialog<EventModel> {
     }
     private void bindPriority() {
 
-        if(eventModel.getPriority().get() == EventModel.STANDARD){
+        if(eventModel.getPriority().get() == TaskModel.STANDARD){
             controller.standardEventButton.fire();
-        } else if (eventModel.getPriority().get() == EventModel.IMPORTANT) {
+        } else if (eventModel.getPriority().get() == TaskModel.IMPORTANT) {
             controller.importantEventButton.fire();
-        } else if (eventModel.getPriority().get() == EventModel.URGENT) {
+        } else if (eventModel.getPriority().get() == TaskModel.URGENT) {
             controller.urgentEventButton.fire();
         }else {
             controller.clearSelected();
         }
-
-
 
 
         controller.getEventType().bindBidirectional(eventModel.getPriority());

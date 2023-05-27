@@ -201,6 +201,7 @@ public class BooksController implements Initializable {
 
 
         Dialog<BookModel> bookDialog = new BookDialog(newBook);
+        bookDialog.setTitle(dialogTitle);
         Optional<BookModel> result = bookDialog.showAndWait();
 
 
@@ -211,7 +212,6 @@ public class BooksController implements Initializable {
                 BookModel addedBook = result.get();
                 if(mode.equals(DialogMode.ADD.toString())){
                     bookModelObservableList.add(addedBook);
-                    // tableView.getItems().add(addedBook);
                     tableView.refresh();
                     util.saveBook(addedBook);
                 }else{
@@ -223,7 +223,6 @@ public class BooksController implements Initializable {
                     //need to update the tableview
                     bookModelObservableList.remove(deletedBook);
                     bookModelObservableList.add(addedBook);
-                    //tableView.getItems().add(addedBook); //sth goes wrong, needs another way of updating
                     tableView.refresh();
                     util.updateBook(addedBook);
                 }
@@ -237,18 +236,7 @@ public class BooksController implements Initializable {
         }
 
 
-
-
-
-
-
-
     }
-
-
-
-
-
 
 
 

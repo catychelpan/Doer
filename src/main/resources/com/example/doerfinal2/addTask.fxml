@@ -7,7 +7,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="485.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doerfinal2.dialogs.eventDialogController">
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="485.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.doerfinal2.dialogs.TaskDialogController">
     <children>
       <HBox alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="435.0">
          <children>

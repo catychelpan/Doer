@@ -1,8 +1,8 @@
 package com.example.doerfinal2.dialogs;
 
 import com.example.doerfinal2.MongodbUtil;
-import com.example.doerfinal2.controllers.EventsViewController;
-import com.example.doerfinal2.models.EventModel;
+import com.example.doerfinal2.controllers.TasksViewController;
+import com.example.doerfinal2.models.TaskModel;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,12 +13,12 @@ import javafx.scene.layout.VBox;
 
 public class AllEventsDialog extends Dialog<ButtonType> {
 
-    private ObservableList<EventModel> allEvents;
+    private ObservableList<TaskModel> allEvents;
     private MongodbUtil util = new MongodbUtil();
 
     private ScrollPane scrollPane = new ScrollPane();
-    private EventsViewController controller = new EventsViewController();
-    public AllEventsDialog(ObservableList<EventModel> allEvents) {
+    private TasksViewController controller = new TasksViewController();
+    public AllEventsDialog(ObservableList<TaskModel> allEvents) {
         super();
         this.setTitle("All Events");
         this.allEvents = allEvents;
@@ -52,7 +52,6 @@ public class AllEventsDialog extends Dialog<ButtonType> {
         getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
         Button buttonOK = (Button) getDialogPane().lookupButton(ButtonType.CANCEL);
         buttonOK.setStyle("-fx-font-size: 14.0;" +
-                "    -fx-font-family: \"System\";" +
                 "    -fx-background-color:#FFFFFF;" +
                 "    -fx-border-color: #000000;" +
                 "    -fx-border-radius : 5 ;" +
@@ -71,7 +70,7 @@ public class AllEventsDialog extends Dialog<ButtonType> {
     }
 
 
-    public void refreshDialogView(EventModel event) {
+    public void refreshDialogView(TaskModel event) {
 
         //problem is here
         String purpose = event.getPurposeString();
@@ -86,14 +85,14 @@ public class AllEventsDialog extends Dialog<ButtonType> {
 
     public void addEventPane() {
 
-        EventModel reference = allEvents.get(0);
-        EventModel oldEvent = new EventModel(reference.getTitleString(),reference.getPriorityInt(), reference.getDescriptionString(),
+        TaskModel reference = allEvents.get(0);
+        TaskModel oldEvent = new TaskModel(reference.getTitleString(),reference.getPriorityInt(), reference.getDescriptionString(),
                 reference.getDate().get(), reference.getStartTimeString(), reference.getEndTimeString(), reference.getPurposeString());
 
 
-        for(EventModel eventItem : allEvents){
+        for(TaskModel eventItem : allEvents){
             HBox eventPane = createEventPane(eventItem);
-            EventsViewController controller = new EventsViewController();
+            TasksViewController controller = new TasksViewController();
             eventPane.setOnMouseClicked(mouseEvent -> {
                 controller.showDetails(eventItem, "showAll dialog");
                 refreshDialogView(oldEvent);
@@ -119,7 +118,7 @@ public class AllEventsDialog extends Dialog<ButtonType> {
 
     }
 
-    public HBox createEventPane(EventModel eventItem) {
+    public HBox createEventPane(TaskModel eventItem) {
        return util.createEventPane(eventItem);
 
 
@@ -127,7 +126,7 @@ public class AllEventsDialog extends Dialog<ButtonType> {
 
     }
 
-    public void setPaneColor(EventModel eventItem, HBox eventPane){
+    public void setPaneColor(TaskModel eventItem, HBox eventPane){
         util.setPriorityColor(eventItem, eventPane);
     }
 

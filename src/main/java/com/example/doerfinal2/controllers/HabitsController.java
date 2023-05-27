@@ -58,10 +58,6 @@ public class HabitsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
-
-
-
-
         finish_btn.setTooltip(new Tooltip("Click if you want to start tracking a new set of habits"));
 
 
@@ -69,7 +65,6 @@ public class HabitsController implements Initializable {
         habitModelsObservableList.addAll(util.getHabitsForWeek(1));
         changeTableCells(week1Table);
         week1Table.setItems(habitModelsObservableList);
-
 
 
 
@@ -147,42 +142,24 @@ public class HabitsController implements Initializable {
         adjustCellFactory(mon_col,"mon");
 
 
-
-
         tue_col.setCellValueFactory(new PropertyValueFactory<>("tuesdaySelected"));
         adjustCellFactory(tue_col,"tue");
-
-
-
-
 
 
         wed_col.setCellValueFactory(new PropertyValueFactory<>("wednesdaySelected"));
         adjustCellFactory(wed_col,"wed");
 
 
-
-
         thu_col.setCellValueFactory(new PropertyValueFactory<>("thursdaySelected"));
         adjustCellFactory(thu_col,"thu");
-
-
-
-
 
 
         fri_col.setCellValueFactory(new PropertyValueFactory<>("fridaySelected"));
         adjustCellFactory(fri_col,"fri");
 
 
-
-
         sat_col.setCellValueFactory(new PropertyValueFactory<>("saturdaySelected"));
         adjustCellFactory(sat_col,"sat");
-
-
-
-
 
 
         sun_col.setCellValueFactory(new PropertyValueFactory<>("sundaySelected"));
@@ -197,9 +174,6 @@ public class HabitsController implements Initializable {
         progress_col.setCellFactory(
                 ProgressBarTableCell.forTableColumn()
         );
-
-
-
 
     }
 

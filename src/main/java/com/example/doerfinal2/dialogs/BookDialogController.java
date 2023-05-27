@@ -1,6 +1,8 @@
 package com.example.doerfinal2.dialogs;
 
 
+
+
 import com.example.doerfinal2.controllers.BooksController;
 import com.example.doerfinal2.models.BookModel;
 import com.jfoenix.controls.JFXButton;
@@ -20,14 +22,18 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
+
+
 public class BookDialogController implements Initializable {
     public BookModel bookModel;
+
 
     public  String selectedFilePath;
     public  String statusOption;
     public  String rate;
     @FXML
     private   JFXTextField titleField;
+
 
     @FXML
     private  JFXTextField author;
@@ -52,21 +58,33 @@ public class BookDialogController implements Initializable {
 
 
 
+
+
+
     public BookDialogController(){
 
 
+
+
     }
+
+
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
+
+
         one.setUserData("1");
         one.setToggleGroup(radio_btn);
-       two.setUserData("2");
+        two.setUserData("2");
         two.setToggleGroup(radio_btn);
         three.setUserData("3");
+
+
+
 
 
 
@@ -77,35 +95,29 @@ public class BookDialogController implements Initializable {
         five.setToggleGroup(radio_btn);
 
 
+
+
         addFile_btn.setOnAction(this::addFile);
         status_option.getItems().addAll(status);
         status_option.setOnAction(this::getStatus);
 
 
-
         radio_btn.selectedToggleProperty().addListener((ov, old_toggle, new_toggle) -> {
-
 
             if (radio_btn.getSelectedToggle() != null) {
 
-
                 rate = radio_btn.getSelectedToggle().getUserData().toString();
 
-
-
-
             }
-
         });
-
-
     }
+
 
     public void addFile (ActionEvent actionEvent){
 
-
         FileChooser.ExtensionFilter ef = new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.pdf", "*.docx");
         FileChooser.ExtensionFilter ef2 = new FileChooser.ExtensionFilter("All Files", "*.*");
+
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(ef, ef2);
@@ -116,23 +128,20 @@ public class BookDialogController implements Initializable {
             addFile_btn.setDisable(true);
             selectedFilePath = selectedFile.getPath();
 
-
         }
 
-
     }
+
+
     public void deleteFile (ActionEvent actionEvent){
         addedFile.setText("Added File");
         addFile_btn.setDisable(false);
     }
 
 
-
-
     private void getStatus (ActionEvent actionEvent){
         statusOption = status_option.getValue();
     }
-
 
     public  JFXTextField getTitleField() {
         return titleField;
@@ -147,12 +156,17 @@ public class BookDialogController implements Initializable {
     }
 
 
+
+
     public void setAuthorField(JFXTextField aut) {
         author = aut;
     }
 
 
+
+
     public void initData(BookModel bookModel) {
+
 
         if(BooksController.mode.equals(BooksController.DialogMode.UPDATE.toString())){
             titleField.setText(bookModel.getTitle());
@@ -167,6 +181,8 @@ public class BookDialogController implements Initializable {
         status_option.valueProperty().setValue(bookModel.getStatus());
 
 
+
+
         for(Toggle toggles : radio_btn.getToggles()){
             if(toggles.getUserData().equals(bookModel.getRate())){
                 toggles.setSelected(true);
@@ -174,18 +190,20 @@ public class BookDialogController implements Initializable {
             }
         }
 
+
         addedFile.setText(bookModel.getFilePath());
         selectedFilePath = addedFile.getText();
         statusOption = status_option.getValue();
 
 
+
+
     }
+
+
 
 
     public void setModel(BookModel book) {
         bookModel = book;
     }
 }
-
-
-
